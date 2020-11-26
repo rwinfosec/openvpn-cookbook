@@ -6,6 +6,8 @@
 .*.sw[a-z]
 *.un~
 
+#IDE
+.idea/
 # Bundler
 Gemfile.lock
 gems.locked

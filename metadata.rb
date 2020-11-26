@@ -5,7 +5,12 @@ license 'All Rights Reserved'
 description 'Installs/Configures openvpn_server'
 long_description 'Installs/Configures openvpn_server'
 version '0.1.0'
-chef_version '>= 14.0'
+chef_version '>= 12' if respond_to?(:chef_version)
+
+supports amazon
+
+recipe 'openvpn_server::install', 'install openvpn server'
+recipe 'openvpn_server::yum_repository', 'install openvpn server'
 
 # The `issues_url` points to the location where issues for this cookbook are
 # tracked.  A `View Issues` link will be displayed on this cookbook's page when
@@ -18,3 +23,4 @@ chef_version '>= 14.0'
 # a Supermarket.
 #
 # source_url 'https://github.com/<insert_org_here>/openvpn_server'
+depends 'yum-epel'
