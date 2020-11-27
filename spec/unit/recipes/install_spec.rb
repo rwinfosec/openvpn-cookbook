@@ -15,8 +15,13 @@ describe 'openvpn_server::install' do
     it 'converges successfully' do
       expect { chef_run }.to_not raise_error
     end
+
+    it 'runs command to enable epel repo' do
+      expect(chef_run).to run_execute('enable epel repo').with(command: '/bin/amazon-linux-extras install epel')
+    end
+
     it 'install osquery' do
-      expect(chef_run).to install_yum_package('openvpn').with(version: '2.8.6')
+      expect(chef_run).to install_yum_package('openvpn').with(version: '2.4.9')
     end
   end
 end
